@@ -3,7 +3,7 @@ module.exports = {
     title: `The Calm Down Box`,
     description: ``,
     author: ``,
-    siteUrl: ``,
+    siteUrl: `https://the-calm-down-box.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

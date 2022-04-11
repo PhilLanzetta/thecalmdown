@@ -1,42 +1,96 @@
 import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import { FaBars, FaShoppingBag, FaTimes } from "react-icons/fa"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const query = graphql`
+  {
+    file(relativePath: { eq: "CDB_Logo.jpeg" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FULL_WIDTH)
+      }
+    }
+  }
+`
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+const Header = ({ toggleSidebar, isOpen }) => {
+  const data = useStaticQuery(query)
+  console.log(data)
 
-Header.defaultProps = {
-  siteTitle: ``,
+  return (
+    <header>
+      <nav className="navbar">
+        <div className="nav-center">
+          <div className="nav-header">
+            <Link className="logo-link" to="/">
+              <GatsbyImage
+                image={data.file.childImageSharp.gatsbyImageData}
+                className="logo-pic"
+              />
+            </Link>
+            <ul className="nav-links">
+              <li>
+                <Link activeClassName="active" to="/" className="page-link">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/shop/"
+                  className="page-link"
+                  activeClassName="active"
+                >
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/about/"
+                  className="page-link"
+                  activeClassName="active"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact/"
+                  className="page-link"
+                  activeClassName="active"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+            <div className="mobile-header-btns">
+              <button type="button" aria-label="cart" className="cart-btn">
+                <FaShoppingBag></FaShoppingBag>
+              </button>
+              {isOpen ? (
+                <button
+                  type="button"
+                  onClick={toggleSidebar}
+                  aria-label="close sidebar"
+                  className="toggle-btn"
+                >
+                  <FaTimes></FaTimes>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={toggleSidebar}
+                  aria-label="open sidebar"
+                  className="toggle-btn"
+                >
+                  <FaBars></FaBars>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  )
 }
 
 export default Header

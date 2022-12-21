@@ -1,7 +1,8 @@
-import * as React from "react"
+import React, { useContext } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { FaBars, FaShoppingBag, FaTimes } from "react-icons/fa"
 import { GatsbyImage } from "gatsby-plugin-image"
+import { CartContext } from "./cartContext"
 
 const query = graphql`
   {
@@ -15,7 +16,9 @@ const query = graphql`
 
 const Header = ({ toggleSidebar, isOpen }) => {
   const data = useStaticQuery(query)
-  console.log(data)
+  const cart = useContext(CartContext)
+
+  const cartCount = cart.getCartCount()
 
   return (
     <header>
@@ -63,9 +66,12 @@ const Header = ({ toggleSidebar, isOpen }) => {
               </li>
             </ul>
             <div className="mobile-header-btns">
-              <button type="button" aria-label="cart" className="cart-btn">
+              <Link to="/checkout" aria-label="cart" className="cart-btn">
+                {cartCount > 0 && (
+                  <div className="cart-number">{cartCount}</div>
+                )}
                 <FaShoppingBag></FaShoppingBag>
-              </button>
+              </Link>
               {isOpen ? (
                 <button
                   type="button"

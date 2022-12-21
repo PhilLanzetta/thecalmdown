@@ -53,14 +53,15 @@ const IndexPage = () => {
           </Link>
         </div>
         <StaticImage
-          src="../assets/river-rocks.jpg"
+          src="../assets/boxOpen.jpg"
           formats={["auto", "webp", "avif"]}
+          placeholder="blurred"
           alt="child meditating"
           className="hero-image"
         />
       </div>
       <ImageText
-        image={<StaticImage src="../assets/kid-meditating.jpg"></StaticImage>}
+        image={<StaticImage src="../assets/ElPaintsSq.jpg"></StaticImage>}
         headline={"Image with Text"}
         bodyText={
           "Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review."

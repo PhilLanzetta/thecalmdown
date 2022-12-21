@@ -7,10 +7,10 @@
 
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-
 import Header from "./header"
 import Footer from "./footer"
 import Sidebar from "./sidebar"
+import { CartProvider } from "./cartContext"
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,10 +20,12 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header isOpen={isOpen} toggleSidebar={toggleSidebar} />
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-      <main>{children}</main>
-      <Footer />
+      <CartProvider>
+        <Header isOpen={isOpen} toggleSidebar={toggleSidebar} />
+        <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+        <main>{children}</main>
+        <Footer />
+      </CartProvider>
     </>
   )
 }

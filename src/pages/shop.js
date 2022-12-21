@@ -1,13 +1,18 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import { useState } from "react"
-
+import CheckoutNow from "../components/checkoutNow"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import ProductSlides from "../components/productSlides"
+import AddToCart from "../components/addToCart"
 
 const Shop = () => {
   const [productChart, setProductChart] = useState("desc")
+  const product = {
+    id: 1,
+    title: "The Calm Down Box",
+    price: 15.98,
+  }
 
   return (
     <Layout>
@@ -15,10 +20,10 @@ const Shop = () => {
       <div className="product-page">
         <ProductSlides />
         <div className="product-information">
-          <h1>The Calm Down Box&trade;</h1>
-          <h2>$35.00</h2>
-          <button className="checkout-btn outline">Add To Cart</button>
-          <button className="checkout-btn filled">Buy It Now</button>
+          <h1>{product.title}&trade;</h1>
+          <h2>${product.price}</h2>
+          <AddToCart product={product}></AddToCart>
+          <CheckoutNow title="BUY NOW" quantity={1}></CheckoutNow>
           <div className="information-chart">
             <div className="chart-nav">
               <button

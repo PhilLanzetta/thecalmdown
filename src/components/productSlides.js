@@ -9,7 +9,10 @@ import Slider from "react-slick/lib/slider"
 const ProductSlides = () => {
   const data = useStaticQuery(graphql`
     {
-      allFile(filter: { relativeDirectory: { eq: "product" } }) {
+      allFile(
+        filter: { relativeDirectory: { eq: "product" } }
+        sort: { fields: name }
+      ) {
         edges {
           node {
             id

@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 
-
 let stripePromise
 const getStripe = () => {
   if (!stripePromise) {
@@ -12,7 +11,7 @@ const getStripe = () => {
   return stripePromise
 }
 
-const CheckoutNow = ({title, quantity}) => {
+const CheckoutNow = ({ title, quantity }) => {
   const [loading, setLoading] = useState(false)
   const redirectToCheckout = async event => {
     event.preventDefault()
@@ -21,9 +20,11 @@ const CheckoutNow = ({title, quantity}) => {
     const stripe = await getStripe()
     const { error } = await stripe.redirectToCheckout({
       mode: "payment",
-      lineItems: [{ price: "price_1MGlSJDiqeZyih7QAMTrmBFo", quantity: quantity }],
-      successUrl: `http://localhost:8000/confirmation/`,
-      cancelUrl: `http://localhost:8000/checkout`,
+      lineItems: [
+        { price: "price_1MGlSJDiqeZyih7QAMTrmBFo", quantity: quantity },
+      ],
+      successUrl: `https://the-calm-down-box.netlify.app/confirmation/`,
+      cancelUrl: `https://the-calm-down-box.netlify.app/checkout`,
     })
 
     if (error) {
@@ -35,7 +36,9 @@ const CheckoutNow = ({title, quantity}) => {
   return (
     <button
       disabled={loading}
-      className={loading ? "checkout-btn filled disabled" : "checkout-btn filled"}
+      className={
+        loading ? "checkout-btn filled disabled" : "checkout-btn filled"
+      }
       onClick={redirectToCheckout}
     >
       {title}

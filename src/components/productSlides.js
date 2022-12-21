@@ -17,7 +17,7 @@ const ProductSlides = () => {
           node {
             id
             childImageSharp {
-              gatsbyImageData
+              gatsbyImageData(placeholder: BLURRED)
             }
           }
         }

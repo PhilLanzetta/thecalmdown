@@ -42,7 +42,7 @@ const CartInfo = () => {
             <article className="cart-details">
               <section className="product-container">
                 <StaticImage
-                  src="../assets/product/product.jpeg"
+                  src="../assets/product/product.png"
                   className="product-image"
                 ></StaticImage>
                 <div className="cart-product-title">

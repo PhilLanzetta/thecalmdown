@@ -35,17 +35,17 @@ const Footer = () => {
           <h3>Legal</h3>
           <ul>
             <li>
-              <Link to="/contact/" className="page-link">
+              <Link to="/terms/" className="page-link">
                 Terms of Service
               </Link>
             </li>
             <li>
-              <Link to="/contact/" className="page-link">
+              <Link to="/privacy/" className="page-link">
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link to="/contact/" className="page-link">
+              <Link to="/refunds/" className="page-link">
                 Refund Policy
               </Link>
             </li>

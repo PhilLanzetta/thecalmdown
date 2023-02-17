@@ -53,12 +53,21 @@ const Shop = () => {
             </div>
             <div className="chart-content" key={productChart}>
               {productChart === "desc" && (
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <div>
+                  <p>
+                    <strong>Product Includes:</strong>
+                  </p>
+                  <ul>
+                    <li>Wooden Trinket Box</li>
+                    <li>Scratch & Sniff Stickers</li>
+                    <li>Assorted Foam/Puffy Stickers</li>
+                    <li>3-pack of Paint Pots</li>
+                    <li>Mini Playdough</li>
+                    <li>DIY Mini-Pinwheel</li>
+                    <li>Skills Passport</li>
+                    <li>Pre-Populated and DIY Self-Regulation Cards</li>
+                  </ul>
+                </div>
               )}
               {productChart === "details" && (
                 <div classname="product-details">
@@ -78,10 +87,7 @@ const Shop = () => {
               )}
               {productChart === "ship" && (
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-                  nihil saepe pariatur a excepturi odio quo temporibus provident
-                  nisi facere. Quas, voluptatibus tenetur. Maxime non fugit
-                  expedita accusamus corrupti voluptates.
+                  Free shipping within the continental US.
                 </p>
               )}
             </div>
